@@ -14,6 +14,9 @@ class BaseModel(models.Model):
 
 	def __unicode__(self):
 		return self.nombre
+    
+    def __str__(self):
+		return self.nombre
 
 class Convenio(BaseModel):
     descripcion = models.CharField(max_length=500)
@@ -33,7 +36,7 @@ class Apoyo(BaseModel):
 class Version(models.Model):
 	version = models.CharField(max_length=50) 
     
-	def __unicode__(self):
+	def __str__(self):
 		return self.version
 
 class TipoDato(BaseModel):
@@ -69,7 +72,7 @@ class DetalleLevantamiento(models.Model):
     actividad = models.ForeignKey(Actividad)
     valor = models.CharField(max_length=50)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.actividad.nombre
 
 class SoporteNC(models.Model):
@@ -77,7 +80,7 @@ class SoporteNC(models.Model):
     soporte = models.FileField(upload_to = 'soporteNC')
     descripcion = models.CharField(max_length=50)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.descripcion
 
 
