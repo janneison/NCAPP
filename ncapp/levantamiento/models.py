@@ -68,7 +68,7 @@ class DetalleLevantamiento(models.Model):
     levantamiento = models.ForeignKey(Levantamiento)
     actividad = models.ForeignKey(Actividad)
     valor = models.CharField(max_length=50)
-    
+
     def __unicode__(self):
         return self.actividad.nombre
 
@@ -78,7 +78,8 @@ class SoporteNC(models.Model):
     descripcion = models.CharField(max_length=50)
 
     def __unicode__(self):
-		return self.descripcion
+        return self.descripcion
+
 
 
 
