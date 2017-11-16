@@ -11,9 +11,7 @@ class BaseModel(models.Model):
 
 	class Meta:
  		abstract = True
-		permissions = (
-			("puede_ver","puede ver"),
-		) 
+		permissions = (("puede_ver","puede ver"),) 
 
 	def __unicode__(self):
 		return self.nombre
