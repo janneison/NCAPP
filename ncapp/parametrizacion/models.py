@@ -10,7 +10,6 @@ class BaseModel(models.Model):
 
 	class Meta:
  		abstract = True
-		permissions = (("puede_ver","puede ver"),) 
 
 	def __unicode__(self):
 		return self.nombre
@@ -27,19 +26,13 @@ class Empresa(models.Model):
 	direccion = models.CharField(max_length=255)
 	esContratista = models.BooleanField(default=False)
 	esContratante = models.BooleanField(default=False)
-  
-	class Meta:
-		permissions = (("can_see","can see"),) 
-
+	
 	def __unicode__(self):
 		return self.nombre
 
 class Cargo(BaseModel):
 	empresa = models.ForeignKey(Empresa)
 	firma_cartas = models.BooleanField(default=False)
-
-	class Meta:
-		permissions = (("can_see_cargo","can see cargo"),) 
 
 class Funcionario(models.Model):
 	empresa = models.ForeignKey(Empresa,related_name="empresa_funcionario",on_delete=models.PROTECT)
@@ -50,6 +43,3 @@ class Funcionario(models.Model):
 
 	def __unicode__(self):
 		return self.user.first_name + ' ' + self.user.last_name
-
-	class Meta:
-		permissions = (("can_see_funcionario","can see funcionario"),) 
