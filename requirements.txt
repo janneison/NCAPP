@@ -3,5 +3,6 @@ Django==1.11.6
 django-grappelli==2.10.1
 djangorestframework==3.7.1
 gunicorn==19.7.1
+psycopg2==2.7.3.2
 pytz==2017.2
 whitenoise==3.3.1
