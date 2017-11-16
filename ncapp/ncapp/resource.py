@@ -1,11 +1,9 @@
-from enum import Enum
-
-class ResponseNC(Enum):
+class ResponseNC:
     message = "message"
     status = "status"
     data = "data"
 
-class StatusNC(Enum):
+class StatusNC:
     ok = "ok"
     fail = "fail"
     data = "data"
