@@ -1,0 +1,1 @@
+web: gunicorn ncapp.wsgi --log-file -

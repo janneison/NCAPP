@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
-from models import Proyecto, Convenio, Circuito, Apoyo, Version, TipoDato
+from models import Proyecto, Convenio, Circuito, Apoyo, Version, TipoDato, Capitulo, Norma, Defecto, Actividad
 
 class AdminConvenio(admin.ModelAdmin):
 	list_display=('nombre','descripcion')
@@ -25,7 +25,15 @@ class AdminVersion(admin.ModelAdmin):
 
 class AdminTipoDato(admin.ModelAdmin):
 	list_display=('nombre','comportamiento')
-	search_fields=('nombre','comportamiento')	
+	search_fields=('nombre','comportamiento')
+
+class AdminNorma(admin.ModelAdmin):
+	list_display=('nombre','capitulo')
+	search_fields=('nombre','capitulo')
+
+class AdminDefecto(admin.ModelAdmin):
+	list_display=('nombre','capitulo')
+	search_fields=('nombre','capitulo')		
 
 admin.site.register(Convenio,AdminConvenio)
 admin.site.register(Proyecto,AdminProyecto)
@@ -33,3 +41,16 @@ admin.site.register(Circuito,AdminCircuito)
 admin.site.register(Apoyo,AdminApoyo)
 admin.site.register(Version,AdminVersion)
 admin.site.register(TipoDato,AdminTipoDato)
+admin.site.register(Norma,AdminNorma)
+admin.site.register(Defecto,AdminDefecto)
+
+class ActividadInline(admin.TabularInline):
+    model = Actividad
+    extra = 3
+    classes = ['collapse']
+    
+class AdminCapitulo(admin.ModelAdmin):
+    inlines = [ ActividadInline ]
+    list_display = ('nombre', 'version')
+    
+admin.site.register(Capitulo, AdminCapitulo)
