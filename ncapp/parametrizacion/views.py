@@ -11,9 +11,9 @@ from rest_framework.response import Response
 from rest_framework.request import Request
 from rest_framework import status
 from rest_framework.pagination import PageNumberPagination
-from models import Provincia, Municipio, Empresa, Cargo
+from parametrizacion.models import Provincia, Municipio, Empresa, Cargo
 from ncapp.resource import MessageNC, ResponseNC
-from serializers import UserSerializer, GroupSerializer, ProvinciaSerializer, MunicipioSerializer, EmpresaSerializer
+from parametrizacion.serializers import UserSerializer, GroupSerializer, ProvinciaSerializer, MunicipioSerializer, EmpresaSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):
