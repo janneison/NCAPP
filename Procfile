@@ -1,1 +1,1 @@
-web: gunicorn ncapp.ncapp.wsgi --log-file -
+web: gunicorn $WSGI_PATH:application --log-file -
