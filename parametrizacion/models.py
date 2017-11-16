@@ -11,7 +11,7 @@ class BaseModel(models.Model):
 	class Meta:
  		abstract = True
 
-	def __str__(self):
+	def __unicode__(self):
 		return self.nombre
 
 class Provincia(BaseModel):
