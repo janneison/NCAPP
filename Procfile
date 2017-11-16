@@ -1,1 +1,1 @@
-web: gunicorn ncapp.wsgi --log-file -
+web: gunicorn ncapp.ncapp.wsgi --log-file -
