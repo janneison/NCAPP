@@ -11,10 +11,7 @@ class BaseModel(models.Model):
 
 	class Meta:
  		abstract = True
-
-	def __unicode__(self):
-		return self.nombre
-    
+         
     def __str__(self):
 		return self.nombre
 
