@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
-from models import Provincia, Municipio, Empresa, Cargo, Funcionario
+from parametrizacion.models import Provincia, Municipio, Empresa, Cargo, Funcionario
 
 class AdminProvincia(admin.ModelAdmin):
 	list_display=('nombre','iniciales')

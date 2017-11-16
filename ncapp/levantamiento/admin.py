@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
-from models import Proyecto, Convenio, Circuito, Apoyo, Version, TipoDato, Capitulo, Norma, Defecto, Actividad
+from levantamiento.models import Proyecto, Convenio, Circuito, Apoyo, Version, TipoDato, Capitulo, Norma, Defecto, Actividad
 
 class AdminConvenio(admin.ModelAdmin):
 	list_display=('nombre','descripcion')
