@@ -11,7 +11,7 @@ class BaseModel(models.Model):
 	class Meta:
  		abstract = True
 
-	def __unicode__(self):
+	def __str__(self):
 		return self.nombre
 
 class Provincia(BaseModel):
@@ -27,7 +27,7 @@ class Empresa(models.Model):
 	esContratista = models.BooleanField(default=False)
 	esContratante = models.BooleanField(default=False)
 	
-	def __unicode__(self):
+	def __str__(self):
 		return self.nombre
 
 class Cargo(BaseModel):
@@ -41,5 +41,5 @@ class Funcionario(models.Model):
 	iniciales = models.CharField(max_length=20,blank=True,null=True)
 	activo=models.BooleanField(default=True)
 
-	def __unicode__(self):
+	def __str__(self):
 		return self.user.first_name + ' ' + self.user.last_name
