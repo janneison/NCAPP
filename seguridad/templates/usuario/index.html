@@ -1,0 +1,46 @@
+{% extends 'page.html' %}
+
+{% block title %}Home{% endblock title %}
+{% load staticfiles %}
+{% block imports %}
+<link href="{% static 'css/pages/dashboard.css' %}" rel="stylesheet">
+{% endblock imports %}
+
+{% block widgetHeader %}
+	<i class="fa fa-home fa-2x"></i>
+	<h3>Inicio</h3>
+{% endblock widgetHeader %}
+
+{% block content %}
+<!--<div class="page-header"><h2><h2>Perfil de usuario</h2></div>-->
+    <div class="span7 alert alert-info">
+         <i class="fa fa-info-circle fa-2x"></i> Bienvenido al sistema de administraci&oacute;n de certificados RETIE Sr.(a) <b>{{ user.usuario.nombres}} {{user.usuario.apellidos}}</b>. <br>Creaci&oacute;n del usuario: {{ user.date_joined}}.<br>
+         {% if not user.last_login == null %}
+         	Ultima entrada: {{ user.last_login }}.
+         {% endif %}	
+    </div>
+    <div class="span3">
+    <img src="{{ user.usuario.foto.url }}" alt="Imagen de {{ user.usuario.nombres }}" width="30%" height="30%" />
+    </div>
+    
+    </br></br></br></br></br></br>
+    <div class="row">
+    <div class="shortcuts">
+    	 {% if user.usuario.administrador == 1 %}
+    	<a class="shortcut" href="/cliente">
+    		<i class="fa fa-group fa-3x"></i>
+    		<span class="shortcut-label">Clientes</span>
+    	</a>
+    	{% endif %}
+    	<a class="shortcut" href="/certificado">
+    		<i class="fa fa-folder fa-3x"></i>
+    		<span class="shortcut-label">Certificados</span>
+    	</a>    	
+    	<a class="shortcut" href="/asignacionespacio">
+    		<i class="fa fa-hdd-o fa-3x"></i>
+    		<span class="shortcut-label">Almacenamiento</span>
+    	</a>
+    </div>	
+    </div>
+   
+{% endblock content %}
