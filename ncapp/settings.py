@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'parametrizacion',
-    'levantamiento'
+    'levantamiento',
+    'seguridad'
 ]
 
 REST_FRAMEWORK = {
