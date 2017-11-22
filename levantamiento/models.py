@@ -22,13 +22,14 @@ class Proyecto(BaseModel):
     convenio = models.ForeignKey(Convenio)
 
 class Circuito(BaseModel):
+    lote = models.ForeignKey(Proyecto, null=True)
     empresa = models.ForeignKey(Empresa)
 
 class Apoyo(BaseModel):
     latitud = models.CharField(max_length=50)
     longitud = models.CharField(max_length=50)
     circuito = models.ForeignKey(Circuito)
-    lote = models.ForeignKey(Proyecto, null=True)
+   
 
 class Version(models.Model):
 	version = models.CharField(max_length=50) 

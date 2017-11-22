@@ -16,8 +16,8 @@ class AdminCircuito(admin.ModelAdmin):
 	search_fields=('empresa','nombre')
 
 class AdminApoyo(admin.ModelAdmin):
-	list_display=('nombre','circuito','lote')
-	search_fields=('nombre','circuito','lote')	
+	list_display=('nombre','circuito')
+	search_fields=('nombre','circuito')	
 
 class AdminVersion(admin.ModelAdmin):
 	list_display=('version',)
