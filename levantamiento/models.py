@@ -63,8 +63,8 @@ class Levantamiento(BaseModel):
     inspeccion = models.IntegerField(default=0)
     poligono = models.IntegerField(default=0)
     observacion = models.CharField(max_length=500)
-    longitudPlano = models.DecimalField(default=0,decimal_places=2)
-    terreno = models.DecimalField(default=0,decimal_places=2)
+    longitudPlano = models.DecimalField(default=0,max_digits=19,decimal_places=2)
+    terreno = models.DecimalField(default=0,max_digits=19,decimal_places=2)
 
 class DetalleLevantamiento(models.Model):
     levantamiento = models.ForeignKey(Levantamiento)
