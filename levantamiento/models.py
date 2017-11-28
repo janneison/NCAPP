@@ -20,16 +20,16 @@ class Convenio(BaseModel):
 
 class Proyecto(BaseModel):
     convenio = models.ForeignKey(Convenio)
+    NumeroDePoligonos = models.IntegerField(default=0)
+    empresa = models.ForeignKey(Empresa, null=True)
 
 class Circuito(BaseModel):
     lote = models.ForeignKey(Proyecto, null=True)
-    empresa = models.ForeignKey(Empresa)
 
 class Apoyo(BaseModel):
     latitud = models.CharField(max_length=50)
     longitud = models.CharField(max_length=50)
     circuito = models.ForeignKey(Circuito)
-   
 
 class Version(models.Model):
 	version = models.CharField(max_length=50) 
@@ -55,15 +55,16 @@ class Actividad(BaseModel):
     tipoDato = models.ForeignKey(TipoDato)
 
 class Levantamiento(BaseModel):
-    empresa = models.ForeignKey(Empresa)
     municipio = models.ForeignKey(Municipio)
     apoyo = models.ForeignKey(Apoyo)
     version = models.ForeignKey(Version)
     contratista 	= models.ForeignKey(Empresa, related_name='fk_contratista', on_delete=models.PROTECT)
     fecha 	= models.DateField(blank=True, null=True)
     inspeccion = models.IntegerField(default=0)
-    poligono = models.CharField(max_length=50)
+    poligono = models.IntegerField(default=0)
     observacion = models.CharField(max_length=500)
+    longitudPlano = models.DecimalField(default=0,decimal_places=2)
+    terreno = models.DecimalField(default=0,decimal_places=2)
 
 class DetalleLevantamiento(models.Model):
     levantamiento = models.ForeignKey(Levantamiento)
