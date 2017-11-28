@@ -44,13 +44,23 @@ admin.site.register(TipoDato,AdminTipoDato)
 admin.site.register(Norma,AdminNorma)
 admin.site.register(Defecto,AdminDefecto)
 
+class NormaInline(admin.TabularInline):
+    model = Norma
+    extra = 3
+    classes = ['collapse']
+
+class DefectoInline(admin.TabularInline):
+    model = Defecto
+    extra = 3
+    classes = ['collapse']
+
 class ActividadInline(admin.TabularInline):
     model = Actividad
     extra = 3
     classes = ['collapse']
     
 class AdminCapitulo(admin.ModelAdmin):
-    inlines = [ ActividadInline ]
+    inlines = [ ActividadInline,NormaInline,DefectoInline ]
     list_display = ('nombre', 'version')
     
 admin.site.register(Capitulo, AdminCapitulo)

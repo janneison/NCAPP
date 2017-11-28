@@ -11,6 +11,11 @@ from django.shortcuts import render
 
 from django.db import models
 
+from django.contrib.auth.models import User
+from django.views.generic import UpdateView
+
+from .forms import UserProfileForm
+
 # Create your views here.
 @login_required
 def index_view(request):
@@ -44,4 +49,28 @@ def logout_view(request):
 @login_required
 def profile_view(request):
     return render(request, 'usuario/base_usuario.html')
+
+class UserProfileUpdateView(UpdateView):
+    model = User
+    template_name = 'usuario/editar_email.html'
+    
+    def get_initial(self):
+        initial = super(UserProfileUpdateView, self).get_initial()
+        try:
+            current_group = self.object.groups.get()
+        except:
+            # exception can occur if the edited user has no groups
+            # or has more than one group
+            pass
+        else:
+            initial['group'] = current_group.pk
+        return initial
+    
+    def get_form_class(self):
+        return UserProfileForm
+    
+    def form_valid(self, form):
+        self.object.groups.clear()
+        self.object.groups.add(form.cleaned_data['group'])
+        return super(UserProfileUpdateView, self).form_valid(form)
 
