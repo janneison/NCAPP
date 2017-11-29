@@ -18,18 +18,24 @@ class BaseModel(models.Model):
 class Convenio(BaseModel):
     descripcion = models.CharField(max_length=500)
 
+class Estado(BaseModel):
+    descripcion = models.CharField(max_length=500)
+
 class Proyecto(BaseModel):
     convenio = models.ForeignKey(Convenio)
-    NumeroDePoligonos = models.IntegerField(default=0)
     empresa = models.ForeignKey(Empresa, null=True)
+    estado = models.ForeignKey(Estado, null=True)
+
+class Poligono(BaseModel):
+    lote = models.ForeignKey(Proyecto, null=True)
 
 class Circuito(BaseModel):
-    lote = models.ForeignKey(Proyecto, null=True)
+    lote = models.ManyToManyField(Proyecto, null=True)
 
 class Apoyo(BaseModel):
     latitud = models.CharField(max_length=50)
     longitud = models.CharField(max_length=50)
-    circuito = models.ForeignKey(Circuito)
+    lote = models.ManyToManyField(Proyecto)
 
 class Version(models.Model):
 	version = models.CharField(max_length=50) 
@@ -60,11 +66,11 @@ class Levantamiento(BaseModel):
     version = models.ForeignKey(Version)
     contratista 	= models.ForeignKey(Empresa, related_name='fk_contratista', on_delete=models.PROTECT)
     fecha 	= models.DateField(blank=True, null=True)
-    inspeccion = models.IntegerField(default=0)
     poligono = models.IntegerField(default=0)
     observacion = models.CharField(max_length=500)
     longitudPlano = models.DecimalField(default=0,max_digits=19,decimal_places=2)
     terreno = models.DecimalField(default=0,max_digits=19,decimal_places=2)
+    soporte = models.FileField(upload_to = 'soporteLEV',null=True)
 
 class DetalleLevantamiento(models.Model):
     levantamiento = models.ForeignKey(Levantamiento)

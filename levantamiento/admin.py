@@ -12,12 +12,12 @@ class AdminProyecto(admin.ModelAdmin):
 	search_fields=('nombre','convenio')	
 
 class AdminCircuito(admin.ModelAdmin):
-	list_display=('lote','nombre')
-	search_fields=('lote','nombre')
+	list_display=('nombre',)
+	search_fields=('nombre',)
 
 class AdminApoyo(admin.ModelAdmin):
-	list_display=('nombre','circuito')
-	search_fields=('nombre','circuito')	
+	list_display=('nombre','latitud','longitud')
+	search_fields=('nombre',)	
 
 class AdminVersion(admin.ModelAdmin):
 	list_display=('version',)
