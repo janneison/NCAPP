@@ -66,7 +66,7 @@ class Levantamiento(BaseModel):
     version = models.ForeignKey(Version)
     contratista 	= models.ForeignKey(Empresa, related_name='fk_contratista', on_delete=models.PROTECT)
     fecha 	= models.DateField(blank=True, null=True)
-    poligono = models.IntegerField(default=0)
+    poligono = models.ForeignKey(Poligono, null=True)
     observacion = models.CharField(max_length=500)
     longitudPlano = models.DecimalField(default=0,max_digits=19,decimal_places=2)
     terreno = models.DecimalField(default=0,max_digits=19,decimal_places=2)
