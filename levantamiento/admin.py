@@ -73,8 +73,8 @@ class DetalleLevantamientoInline(admin.TabularInline):
     extra = 3
     classes = ['collapse']
     
-class AdminCapitulo(admin.ModelAdmin):
-    inlines = [ DetalleLevantamiento ]
+class AdminLevantamiento(admin.ModelAdmin):
+    inlines = [ DetalleLevantamientoInline ]
     list_display = ('apoyo', 'fecha')
     
 admin.site.register(Levantamiento, AdminLevantamiento)
