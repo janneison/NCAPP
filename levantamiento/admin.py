@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.contrib import admin
 from levantamiento.models import (Proyecto, Convenio, 
 Circuito, Apoyo, Version, TipoDato, Capitulo, 
-Levantamiento, Estado, DetalleLevantamiento,
+Levantamiento, Estado, DetalleLevantamiento,SoporteNC,
 Norma, Defecto, Actividad)
 
 class AdminConvenio(admin.ModelAdmin):
@@ -36,7 +36,11 @@ class AdminNorma(admin.ModelAdmin):
 
 class AdminDefecto(admin.ModelAdmin):
 	list_display=('nombre','capitulo')
-	search_fields=('nombre','capitulo')		
+	search_fields=('nombre','capitulo')	
+
+class AdminEstado(admin.ModelAdmin):
+	list_display=('nombre','descripcion')
+	search_fields=('nombre','descripcion')		
 
 admin.site.register(Convenio,AdminConvenio)
 admin.site.register(Proyecto,AdminProyecto)
@@ -46,6 +50,7 @@ admin.site.register(Version,AdminVersion)
 admin.site.register(TipoDato,AdminTipoDato)
 admin.site.register(Norma,AdminNorma)
 admin.site.register(Defecto,AdminDefecto)
+admin.site.register(Estado,AdminEstado)
 
 class NormaInline(admin.TabularInline):
     model = Norma
@@ -78,3 +83,9 @@ class AdminLevantamiento(admin.ModelAdmin):
     list_display = ('apoyo', 'fecha')
     
 admin.site.register(Levantamiento, AdminLevantamiento)
+
+class AdminSoporteNC(admin.ModelAdmin):
+	list_display=('nombre','detalleLevantamiento','descripcion')
+	search_fields=('nombre','detalleLevantamiento')	
+
+admin.site.register(SoporteNC, AdminSoporteNC)
