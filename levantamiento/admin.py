@@ -1,7 +1,10 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
-from levantamiento.models import Proyecto, Convenio, Circuito, Apoyo, Version, TipoDato, Capitulo, Norma, Defecto, Actividad
+from levantamiento.models import (Proyecto, Convenio, 
+Circuito, Apoyo, Version, TipoDato, Capitulo, 
+Levantamiento, Estado, DetalleLevantamiento,
+Norma, Defecto, Actividad)
 
 class AdminConvenio(admin.ModelAdmin):
 	list_display=('nombre','descripcion')
@@ -64,3 +67,14 @@ class AdminCapitulo(admin.ModelAdmin):
     list_display = ('nombre', 'version')
     
 admin.site.register(Capitulo, AdminCapitulo)
+
+class DetalleLevantamientoInline(admin.TabularInline):
+    model = DetalleLevantamiento
+    extra = 3
+    classes = ['collapse']
+    
+class AdminCapitulo(admin.ModelAdmin):
+    inlines = [ DetalleLevantamiento ]
+    list_display = ('apoyo', 'fecha')
+    
+admin.site.register(Levantamiento, AdminLevantamiento)
