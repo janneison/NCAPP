@@ -85,7 +85,7 @@ class AdminLevantamiento(admin.ModelAdmin):
 admin.site.register(Levantamiento, AdminLevantamiento)
 
 class AdminSoporteNC(admin.ModelAdmin):
-	list_display=('nombre','detalleLevantamiento','descripcion')
-	search_fields=('nombre','detalleLevantamiento')	
+	list_display=('detalleLevantamiento','descripcion')
+	search_fields=('detalleLevantamiento','descripcion')	
 
 admin.site.register(SoporteNC, AdminSoporteNC)
