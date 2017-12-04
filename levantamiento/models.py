@@ -73,9 +73,11 @@ class Levantamiento(BaseModel):
     soporte = models.FileField(upload_to = 'soporteLEV',null=True)
 
 class DetalleLevantamiento(models.Model):
+    valores = ((u'C',u'Conforme'),(u'NC',u'NoConforme'),
+		(u'N/A',u'No Aplica'),)
     levantamiento = models.ForeignKey(Levantamiento)
     actividad = models.ForeignKey(Actividad)
-    valor = models.CharField(max_length=50)
+    valor = models.CharField(max_length=50,choices=valores,default='N/A')
 
     def __str__(self):
         return self.actividad.nombre
