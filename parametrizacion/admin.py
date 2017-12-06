@@ -13,8 +13,8 @@ class AdminMunicipio(admin.ModelAdmin):
 	search_fields=('nombre','provincia')	
 
 class AdminEmpresa(admin.ModelAdmin):
-	list_display=('nit','nombre')
-	search_fields=('nit','nombre')
+	list_display=('rnc','nombre')
+	search_fields=('rnc','nombre')
 
 class AdminCargo(admin.ModelAdmin):
 	list_display=('nombre','empresa')

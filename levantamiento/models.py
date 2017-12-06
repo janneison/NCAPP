@@ -60,6 +60,9 @@ class Actividad(BaseModel):
     capitulo = models.ForeignKey(Capitulo)
     tipoDato = models.ForeignKey(TipoDato)
 
+    def __str__(self):
+		return self.capitulo.nombre + ' ' + self.nombre
+
 class Levantamiento(BaseModel):
     municipio = models.ForeignKey(Municipio)
     apoyo = models.ForeignKey(Apoyo)

@@ -21,7 +21,7 @@ class Municipio(BaseModel):
     provincia = models.ForeignKey(Provincia)
 
 class Empresa(models.Model):
-	nit = models.CharField(max_length=255, unique=True)
+	rnc = models.CharField(max_length=255, unique=True)
 	nombre = models.CharField(max_length=255)
 	direccion = models.CharField(max_length=255)
 	esContratista = models.BooleanField(default=False)
